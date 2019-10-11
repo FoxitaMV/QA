@@ -2,6 +2,7 @@ import pytest
 import test_mainpage_form
 import test_testdrive_from
 import test_service_form
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 def test_function_one():
     text = 'Заявка отправлена'

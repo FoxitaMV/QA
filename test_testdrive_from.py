@@ -28,23 +28,24 @@ class TestTestdriverForm():
     def __init__(self):
         with open("conf.json", "r") as f:
             conf = json.load(f)
-            
-        desired_cap = {
-         'browserName': 'iPhone',
-         'device': 'iPhone 8',
-         'realMobile': 'true',
-         'os_version': '11',
-         'name': 'Bstack-[Python] Sample Test'
-        }
 
-        driver = webdriver.Remote(
-            command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
-            desired_capabilities=desired_cap)
-        # self.driver = webdriver.Chrome()
-        # driver = self.driver
+        # desired_cap = {
+        #  'browserName': 'iPhone',
+        #  'device': 'iPhone 8',
+        #  'realMobile': 'true',
+        #  'os_version': '11',
+        #  'name': 'Bstack-[Python] Sample Test'
+        # }
+
+        # driver = webdriver.Remote(
+        #     command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
+        #     desired_capabilities=desired_cap)
+
+        self.driver = webdriver.Chrome()
+        driver = self.driver
+
         driver.get(conf['host']) 
         assert 'Запись на тест-драйв' in driver.title
-        
     
         self = driver.find_element(By.CSS_SELECTOR, '.choices')
         self.send_keys(Keys.ENTER)

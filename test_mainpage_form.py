@@ -22,23 +22,23 @@ class TestMainPageForm():
 
     def __init__(self):
 
-        desired_cap = {
-         'browserName': 'iPhone',
-         'device': 'iPhone 8',
-         'realMobile': 'true',
-         'os_version': '11',
-         'name': 'Bstack-[Python] Sample Test'
-        }
+        # desired_cap = {
+        #  'browserName': 'iPhone',
+        #  'device': 'iPhone 8',
+        #  'realMobile': 'true',
+        #  'os_version': '11',
+        #  'name': 'Bstack-[Python] Sample Test'
+        # }
 
-        driver = webdriver.Remote(
-            command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
-            desired_capabilities=desired_cap)
+        # driver = webdriver.Remote(
+        #     command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
+        #     desired_capabilities=desired_cap)
 
         with open("conf.json", "r") as f:
             conf = json.load(f)
 
-        # self.driver = webdriver.Chrome()
-        # driver = self.driver
+        self.driver = webdriver.Chrome()
+        driver = self.driver
 
         driver.get(conf['host3']) 
         assert 'Главная страница' in driver.title
@@ -54,7 +54,7 @@ class TestMainPageForm():
         # finally:
         self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(2)').click()
         self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(1)').click()
-        
+
         self = driver.find_element(By.CSS_SELECTOR, '#name').send_keys(conf['name'])
         self = driver.find_element(By.CSS_SELECTOR, '#phone').send_keys(conf['phone'])
         self = driver.find_element(By.CSS_SELECTOR, '#email').send_keys(conf['email'])
