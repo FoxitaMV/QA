@@ -14,6 +14,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import json
 
 d = datetime.date.fromordinal(datetime.date.today().toordinal()+1).strftime("%d/%m/%Y")
@@ -27,8 +28,20 @@ class TestTestdriverForm():
     def __init__(self):
         with open("conf.json", "r") as f:
             conf = json.load(f)
-        self.driver = webdriver.Chrome()
-        driver = self.driver
+            
+        desired_cap = {
+         'browserName': 'iPhone',
+         'device': 'iPhone 8',
+         'realMobile': 'true',
+         'os_version': '11',
+         'name': 'Bstack-[Python] Sample Test'
+        }
+
+        driver = webdriver.Remote(
+            command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
+            desired_capabilities=desired_cap)
+        # self.driver = webdriver.Chrome()
+        # driver = self.driver
         driver.get(conf['host']) 
         assert 'Запись на тест-драйв' in driver.title
         

@@ -23,11 +23,10 @@ class TestMainPageForm():
     def __init__(self):
 
         desired_cap = {
-         'browser': 'Edge',
-         'browser_version': '18.0',
-         'os': 'Windows',
-         'os_version': '10',
-         'resolution': '1440x900',
+         'browserName': 'iPhone',
+         'device': 'iPhone 8',
+         'realMobile': 'true',
+         'os_version': '11',
          'name': 'Bstack-[Python] Sample Test'
         }
 
@@ -37,38 +36,36 @@ class TestMainPageForm():
 
         with open("conf.json", "r") as f:
             conf = json.load(f)
+
         # self.driver = webdriver.Chrome()
         # driver = self.driver
+
         driver.get(conf['host3']) 
         assert 'Главная страница' in driver.title
         self = driver.find_element(By.ID, 'main_page_form')
 
-        try:
-            self = driver.find_element(By.CSS_SELECTOR, 'div.form__section:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)')
-            self.send_keys(Keys.ENTER)
-            self.send_keys(Keys.ARROW_DOWN)
-            self.send_keys(Keys.ARROW_DOWN)
-            self.send_keys(Keys.ENTER)
+        # try:
+        #     self = driver.find_element(By.CSS_SELECTOR, 'div.form__section:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)')
+        #     self.send_keys(Keys.ENTER)
+        #     self.send_keys(Keys.ARROW_DOWN)
+        #     self.send_keys(Keys.ARROW_DOWN)
+        #     self.send_keys(Keys.ENTER)
 
-        finally:
-            self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(2)').click()
+        # finally:
+        self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(2)').click()
+        self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(1)').click()
+        
+        self = driver.find_element(By.CSS_SELECTOR, '#name').send_keys(conf['name'])
+        self = driver.find_element(By.CSS_SELECTOR, '#phone').send_keys(conf['phone'])
+        self = driver.find_element(By.CSS_SELECTOR, '#email').send_keys(conf['email'])
 
-            self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(1)').click()
+        self = driver.find_element(By.XPATH, '//*[@id="callback_form"]/div/div[3]/div[2]/div[1]/div/div/div/div[1]')
+        self.send_keys(Keys.ENTER)
+        self.send_keys(Keys.ARROW_DOWN)
+        self.send_keys(Keys.ARROW_DOWN)
+        self.send_keys(Keys.ENTER)
 
-            self = driver.find_element(By.CSS_SELECTOR, '#name').send_keys(conf['name'])
-
-            self = driver.find_element(By.CSS_SELECTOR, '#phone').send_keys(conf['phone'])
-
-            self = driver.find_element(By.CSS_SELECTOR, '#email').send_keys(conf['email'])
-
-            self = driver.find_element(By.CSS_SELECTOR, 'div.form__section:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)')
-            self.send_keys(Keys.ENTER)
-            self.send_keys(Keys.ARROW_DOWN)
-            self.send_keys(Keys.ARROW_DOWN)
-            self.send_keys(Keys.ENTER)
-
-            self = driver.find_element(By.CSS_SELECTOR, '.u115-00').click()
-
-            self = driver.find_element(By.CSS_SELECTOR, 'button.u107-00__btn > span:nth-child(1)') .click()
+        self = driver.find_element(By.CSS_SELECTOR, '.u115-00').click()
+        self = driver.find_element(By.CSS_SELECTOR, 'button.u107-00__btn > span:nth-child(1)') .click()
 
 ts = TestMainPageForm()
