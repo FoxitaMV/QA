@@ -13,18 +13,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
+import json
 
-link = "https://keyauto.client.bmw.kodixauto.ru/"
-name = 'Игорь'
-phone = '9124567897'
-email = 'test@qa.test'
 
 
 class TestMainPageForm():
     def __init__(self):
+        with open("conf.json", "r") as f:
+            conf = json.load(f)
         self.driver = webdriver.Chrome()
         driver = self.driver
-        driver.get(link) 
+        driver.get(conf['link']) 
         assert 'Главная страница' in driver.title
         self = driver.find_element(By.ID, 'main_page_form')
 
@@ -38,11 +37,11 @@ class TestMainPageForm():
 
         self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(1)').click()
 
-        self = driver.find_element(By.CSS_SELECTOR, '#name').send_keys(name)
+        self = driver.find_element(By.CSS_SELECTOR, '#name').send_keys(conf['name'])
 
-        self = driver.find_element(By.CSS_SELECTOR, '#phone').send_keys(phone)
+        self = driver.find_element(By.CSS_SELECTOR, '#phone').send_keys(conf['phone'])
 
-        self = driver.find_element(By.CSS_SELECTOR, '#email').send_keys(email)
+        self = driver.find_element(By.CSS_SELECTOR, '#email').send_keys(conf['email'])
 
         self = driver.find_element(By.CSS_SELECTOR, 'div.form__section:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)')
         self.send_keys(Keys.ENTER)
