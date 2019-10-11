@@ -1,6 +1,7 @@
 {
     "host": "https://keyauto.client.bmw.kodixauto.ru/offers-and-services/test-drive/#test_drive_form",
     "host2": "https://bavaria.client.bmw.kodixauto.ru/owners/vehicle-service-parts/service-form/#service_form",
+    "host3": "https://bavaria.client.bmw.kodixauto.ru/",
     "lastname": "Петров",
     "name": "Петр",
     "phone": "9124567897",

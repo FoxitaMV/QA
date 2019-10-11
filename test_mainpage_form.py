@@ -13,17 +13,33 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import json
 
 
 
 class TestMainPageForm():
+
     def __init__(self):
+
+        desired_cap = {
+         'browser': 'Edge',
+         'browser_version': '18.0',
+         'os': 'Windows',
+         'os_version': '10',
+         'resolution': '1440x900',
+         'name': 'Bstack-[Python] Sample Test'
+        }
+
+        driver = webdriver.Remote(
+            command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
+            desired_capabilities=desired_cap)
+
         with open("conf.json", "r") as f:
             conf = json.load(f)
-        self.driver = webdriver.Chrome()
-        driver = self.driver
-        driver.get(conf['link']) 
+        # self.driver = webdriver.Chrome()
+        # driver = self.driver
+        driver.get(conf['host3']) 
         assert 'Главная страница' in driver.title
         self = driver.find_element(By.ID, 'main_page_form')
 
