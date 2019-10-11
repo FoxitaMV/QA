@@ -1,20 +1,20 @@
 import pytest
-import test_mainpage_form
-import test_testdrive_from
-import test_service_form
+from pc import test_mainpage_form
+from pc import test_testdrive_from
+from pc import test_service_form
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-def test_function_one():
+def testdrive_form():
     text = 'Заявка отправлена'
     assert (text in test_testdrive_from.ts.driver.page_source)
-test_function_one()
+testdrive_form()
 
-def test_function_two():
+def main_page_form():
     text = 'Сообщение отправлено'
     assert (text in test_mainpage_form.ts.driver.page_source)
-test_function_two()
+main_page_form()
 
-def service_form_send():
+def service_page_form():
     text = "Сообщение отправлено! =)"
     assert (text in test_service_form.ts.driver.page_source)
-service_form_send()
+service_page_form()

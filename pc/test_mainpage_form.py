@@ -22,18 +22,6 @@ class TestMainPageForm():
 
     def __init__(self):
 
-        # desired_cap = {
-        #  'browserName': 'iPhone',
-        #  'device': 'iPhone 8',
-        #  'realMobile': 'true',
-        #  'os_version': '11',
-        #  'name': 'Bstack-[Python] Sample Test'
-        # }
-
-        # driver = webdriver.Remote(
-        #     command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
-        #     desired_capabilities=desired_cap)
-
         with open("conf.json", "r") as f:
             conf = json.load(f)
 
@@ -51,7 +39,6 @@ class TestMainPageForm():
         #     self.send_keys(Keys.ARROW_DOWN)
         #     self.send_keys(Keys.ENTER)
 
-        # finally:
         self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(2)').click()
         self = driver.find_element(By.CSS_SELECTOR, 'label.u116-00:nth-child(1)').click()
 

@@ -79,4 +79,5 @@ class ServiceFormTest():
 
         self = driver.find_element(By.XPATH, '/html/body/div[1]/main/div/div/div/div/div/div/div/div/div/div[2]/form/div/div[6]/div/button').click()
         time.sleep(2)
+
 ts =  ServiceFormTest()

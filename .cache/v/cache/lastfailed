@@ -1,5 +1,9 @@
 {
+  "mobile_page_test.py": true, 
   "page_test.py": true, 
+  "pc/test_mainpage_form.py": true, 
+  "pc/test_service_form.py": true, 
+  "pc_page_test.py": true, 
   "test.py": true, 
   "test_2.py": true, 
   "test_mainpage_form.py": true, 
