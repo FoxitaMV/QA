@@ -1,10 +1,11 @@
 {
-  "test.py": true,
-  "test_2.py": true,
-  "test_mainpage_form.py": true,
-  "test_service_form.py": true,
-  "test_testdrive_from.py": true,
-  "test_testdrive_from.py::TestMainForm::()": true,
-  "test_testdrive_from.py::TestMainForm::()::test_send_form": true,
+  "page_test.py": true, 
+  "test.py": true, 
+  "test_2.py": true, 
+  "test_mainpage_form.py": true, 
+  "test_service_form.py": true, 
+  "test_testdrive_from.py": true, 
+  "test_testdrive_from.py::TestMainForm::()": true, 
+  "test_testdrive_from.py::TestMainForm::()::test_send_form": true, 
   "test_testdrive_from.py::TestTestdriverForm::()::test_send_form": true
 }
