@@ -21,13 +21,13 @@ import json
 class TestMainPageForm():
 
     def __init__(self):
-
+        #load json file
         with open("conf.json", "r") as f:
             conf = json.load(f)
-
+        #load locel driver
         self.driver = webdriver.Chrome()
         driver = self.driver
-
+        #open lonk
         driver.get(conf['host3']) 
         assert 'Главная страница' in driver.title
         self = driver.find_element(By.ID, 'main_page_form')

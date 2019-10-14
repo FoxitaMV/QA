@@ -19,7 +19,7 @@ import json
 class TestMainPageForm():
 
     def __init__(self):
-
+        #device selection
         desired_cap = {
          'browserName': 'iPhone',
          'device': 'iPhone 8',
@@ -27,14 +27,15 @@ class TestMainPageForm():
          'os_version': '11',
          'name': 'Bstack-[Python] Sample Test'
         }
-
+        #load remote device
         driver = webdriver.Remote(
             command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
             desired_capabilities=desired_cap)
-
+        #load json file
         with open("conf.json", "r") as f:
             conf = json.load(f)
 
+        #open lonk    
         driver.get(conf['host3']) 
         assert 'Главная страница' in driver.title
         self = driver.find_element(By.ID, 'main_page_form')

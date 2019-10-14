@@ -26,9 +26,11 @@ t = time.strftime("%H/%M", time.localtime())
 class TestTestdriverForm():
 
     def __init__(self):
+        #load json file
         with open("conf.json", "r") as f:
             conf = json.load(f)
 
+        #device selection
         desired_cap = {
          'browserName': 'iPhone',
          'device': 'iPhone 8',
@@ -37,11 +39,12 @@ class TestTestdriverForm():
          'name': 'Bstack-[Python] Sample Test'
         }
 
+        #load remove device
         driver = webdriver.Remote(
             command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
             desired_capabilities=desired_cap)
 
-
+        #open link
         driver.get(conf['host']) 
         assert 'Запись на тест-драйв' in driver.title
     

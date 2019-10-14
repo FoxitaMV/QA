@@ -26,12 +26,14 @@ t = time.strftime("%H/%M", time.localtime())
 class TestTestdriverForm():
 
     def __init__(self):
+        #load json file
         with open("conf.json", "r") as f:
             conf = json.load(f)
 
+        #load local dirver
         self.driver = webdriver.Chrome()
         driver = self.driver
-
+        #open link
         driver.get(conf['host']) 
         assert 'Запись на тест-драйв' in driver.title
     

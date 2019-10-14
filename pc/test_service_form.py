@@ -23,25 +23,15 @@ y = datetime.date.fromordinal(datetime.date.today().toordinal()+1).strftime("%Y"
 
 class ServiceFormTest():
     def __init__(self):
+        #load json file
         with open("conf.json", "r") as f:
             conf = json.load(f)
 
-        # desired_cap = {
-        #  'browserName': 'iPhone',
-        #  'device': 'iPhone 8',
-        #  'realMobile': 'true',
-        #  'os_version': '11',
-        #  'name': 'Bstack-[Python] Sample Test'
-        # }
-
-        # driver = webdriver.Remote(
-        #     command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
-        #     desired_capabilities=desired_cap)
-
-
+        #load local chrome driver  
         self.driver = webdriver.Chrome()
         driver = self.driver
 
+        #open link
         driver.get(conf["host2"]) 
         assert 'Запись на сервис' in driver.title
 

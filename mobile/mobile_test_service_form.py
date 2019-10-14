@@ -24,10 +24,11 @@ y = datetime.date.fromordinal(datetime.date.today().toordinal()+1).strftime("%Y"
 class ServiceFormTest():
 
     def __init__(self):
-
+        #load json file
         with open("conf.json", "r") as f:
             conf = json.load(f)
 
+        #device selection 
         desired_cap = {
          'browserName': 'iPhone',
          'device': 'iPhone 8',
@@ -36,11 +37,12 @@ class ServiceFormTest():
          'name': 'Bstack-[Python] Sample Test'
         }
 
+        #connect reemove device
         driver = webdriver.Remote(
             command_executor='https://kodix4:ufdfrtPXakc7qkbZci8Y@hub-cloud.browserstack.com/wd/hub',
             desired_capabilities=desired_cap)
 
-
+        #open link
         driver.get(conf["host2"]) 
         assert 'Запись на сервис' in driver.title
 
